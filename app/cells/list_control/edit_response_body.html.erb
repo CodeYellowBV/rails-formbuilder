@@ -1,0 +1,2 @@
+<%= render_form_element @item, :render_edit_list, :list => @item.get_property_value(:options) %>
+<input name="form_items[<%= @item.id %>][]" type="hidden" value="<%= h ListControl.hidden_value_hack %>" />

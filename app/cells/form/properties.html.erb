@@ -1,0 +1,19 @@
+<div id="form-properties" class="form-properties properties">
+  <h2>Form preferences</h2>
+  <%= form_tag({:controller => "form", :action => "save", :id => @form.id}, :remote => true) do -%>
+    <ul>
+      <li class="form-name">
+       <label title="Form name">Form name:</label>
+        <input type="text" name="form[name]" value="<%= h @form.name %>" />
+      </li>
+    </ul>
+    <input type='submit' value='save' class='save-button' />
+  <% end %>
+
+  <ul class="not-saved">
+    <li class="snap-to-rulers">
+      <label for="snap-to-rulers" title="Snap to rulers">Snap to rulers?</label>
+      <input name="snap-to-rulers" id="snap-to-rulers" type="checkbox" checked="checked" />
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,2 @@
+class SelectControlCell < ListControlCell
+end

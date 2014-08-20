@@ -1,0 +1,5 @@
+page["item-properties-wrapper"].hide
+page["item-properties"].replace_html render_form_element(@item, :properties)
+page.visual_effect :slide_down, "item-properties-wrapper"
+page.select('.selected').each {|e| e.remove_class_name('selected') }
+page["form-item_#{@item.id}"].add_class_name('selected')

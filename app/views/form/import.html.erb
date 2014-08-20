@@ -1,0 +1,10 @@
+<h1>Import a form</h1>
+
+<%= error_messages_for('form') %>
+
+<p>You can upload an exported XML file to import it back into a form.</p>
+
+<%= form_tag({}, :id => 'import', :multipart => true) do %>
+<input type="file" name="file" />
+<input type="submit" value="submit" />
+<% end %>

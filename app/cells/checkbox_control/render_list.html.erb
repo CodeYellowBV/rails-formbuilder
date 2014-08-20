@@ -1,0 +1,17 @@
+<% if @opts[:list].blank? %>
+[no checkboxes defined]
+<% else %>
+<%   @opts[:list].each do |entry| %>
+<%     if entry.is_a?(Hash) %>
+<label>
+<input type="checkbox" name="form_items[<%=@item.id%>][]" value="<%= h entry[:value] %>" <%= 'checked="checked"' if entry[:default] %> />
+<%= h entry[:name] %>
+</label>
+<%     elsif entry.is_a?(Array) %>
+<fieldset>
+  <legend><%= entry[0] %></legend>
+<%=      render_form_element @item, :render_list, :list => entry[1..-1] %>
+</fieldset>
+<%     end %>
+<%   end %>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_item_start(@item) %>
+<%= @item.get_property_value(:label) %>:
+<% (@form_response.item_value(@item) || []).each do |value| %>
+<% name = @item.option_name_for_value(value) %>
+<%= h value %><%= " (#{h name})" if name %>
+<% end %>
+<%= form_item_end(@item) %>

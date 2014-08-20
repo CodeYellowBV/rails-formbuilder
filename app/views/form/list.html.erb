@@ -1,0 +1,27 @@
+<h1>Available forms</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Created</th>
+    <th>Last updated</th>
+    <th colspan="4"></th>
+  </tr>
+<% @forms.each do |form| %>
+  <tr>
+    <td><%= form.name %></td>
+    <td><%= form.created_at.to_formatted_s(:short) %></td>
+    <td><%= form.updated_at.to_formatted_s(:short) %></td>
+    <td><%= link_to(formbuilder_image_tag("edit.png"), :action => 'edit', :id => form.id) %></td>
+    <% # button_to supports no images (-( %>
+    <td><%= form_tag(:action => 'destroy', :id => form.id) do %><%= tag :input, {:class => 'post-link', :type => 'image', :src => (formbuilder_image_path("destroy.png")), :value => 'Destroy'} %><% end %></td>
+    <td><%= link_to(formbuilder_image_tag("fill_in.png", :title => "Fill in this form"), :controller => "form_response", :action => 'new', :id => form.id) %></td>
+    <td><%= link_to(formbuilder_image_tag("responses.png", :title => "Show the responses for this form"), :controller => "form_response", :action => 'list', :id => form.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @forms %>
+
+<%= link_to("Create a new form", :action => 'new') %>
+<%= link_to("Import a form", :action => 'import') %>

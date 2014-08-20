@@ -1,0 +1,11 @@
+<% @opts[:list].each do |entry| %>
+<%   if entry.is_a?(Hash) %>
+<option value="<%= h entry[:value] %>" <%= 'selected="selected"' if entry[:default] %> />
+<%= h entry[:name] %>
+</option>
+<%   elsif entry.is_a?(Array) %>
+<optgroup label="<%= entry[0] %>">
+<%=    render_form_element @item, :render_list, :list => entry[1..-1] %>
+</optgroup>
+<%   end %>
+<% end %>

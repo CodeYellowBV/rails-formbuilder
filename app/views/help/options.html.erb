@@ -1,0 +1,121 @@
+<h1>Options syntax</h1>
+
+<p>For form items that accept lists of options like checkboxes or drop-down
+    selection lists, you can use the following syntax:</p>
+
+<pre>
+  <code>
+    # red
+    * green
+    # blue
+    # yellow
+  </code>
+</pre>
+
+<p>The pound sign (#) indicates a new option, the asterisk (*) indicates the
+    option (or options) that should be pre-selected by default.</p>
+
+<h2>Nesting</h2>
+
+<p>It is also possible to make <em>groups of options</em>, resulting in a
+    nested hierarchy like so:</p>
+
+<pre>
+  <code>
+    og. fruit
+    ## banana
+    ** apple
+    ## mango
+    og. colors
+    ## red
+    ## green
+    og. og. shades of green
+    *** emerald
+    ### lime
+    ### olive
+    ## blue
+    ## purple
+    # None of the above
+  </code>
+</pre>
+
+<p>This will look something like this:</p>
+
+<fieldset style="float: left; clear: left">
+  <legend>fruit</legend>
+  <label>
+    <input value="1" type="checkbox">
+    banana
+  </label>
+  <label>
+    <input value="2" checked="checked" type="checkbox">
+    apple
+  </label>
+  <label>
+    <input value="3" type="checkbox">
+    mango
+  </label>
+</fieldset>
+<fieldset style="float: left; clear: left">
+  <legend>colors</legend>
+  <label>
+    <input value="4" type="checkbox">
+    red
+  </label>
+  <label>
+    <input value="5" type="checkbox">
+    green
+  </label>
+  <fieldset>
+    <legend>shades of green</legend>
+    <label>
+      <input value="6" checked="checked" type="checkbox">
+      emerald
+    </label>
+    <label>
+      <input value="7" type="checkbox">
+      lime
+    </label>
+    <label>
+      <input value="8" type="checkbox">
+      olive
+    </label>
+  </fieldset>
+  <label>
+    <input value="9" type="checkbox">
+    blue
+  </label>
+  <label>
+    <input value="10" type="checkbox">
+    purple
+  </label>
+</fieldset>
+<label style="float: left; clear: left">
+  <input value="11" type="checkbox">
+  None of the above
+</label>
+
+<p style="clear: left">Please note that it is not always possible to create
+   groups or nest them.  This depends on the type of form item.  If it cannot
+   be done, the application will notify you about this by printing an error.</p>
+
+<h2>Stored value</h2>
+
+<p>You can control the actual value which is stored internally by
+appending a colon and the value to the option. The text before the colon
+is presented in the dropdown, the text after the colon is stored:</p>
+
+<pre>
+  <code>
+    og. fruit
+    ## banana:ba
+    ** apple:ap
+    ## mango:ma
+  </code>
+</pre>
+
+<p>If no value is used, the value is identical to the presented string.
+The advantage of using a value is that the presentation can be changed
+while the storage stays consistent. This allows you, for example, to
+clarify the meaning of an option in the form, while keeping the value
+of old forms that were filled in consistent with the new one.</p>

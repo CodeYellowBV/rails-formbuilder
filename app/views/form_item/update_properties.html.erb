@@ -1,0 +1,6 @@
+<script type="text/javascript">
+(function() {
+with(this) {
+$("form-item_<%= @item.id %>").replace("<%= escape_javascript render_form_element(@item, :show) %>");
+$("item-properties").update("<%= escape_javascript render_form_element(@item, :properties) %>");
+}}).call(window.parent);</script>

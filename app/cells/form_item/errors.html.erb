@@ -1,0 +1,3 @@
+<div id="form-item-errors_<%= @item.id %>" class="error-wrapper" <%= 'style="display: none"' unless @item_value && !@item_value.errors.empty? %>>
+<%= error_list(@item_value) if @item_value %>
+</div>

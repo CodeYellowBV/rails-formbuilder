@@ -1,0 +1,2 @@
+class CheckboxControlCell < ListControlCell
+end

@@ -1,0 +1,5 @@
+if @old_line.form_item_ids.empty?
+  page["line_#{@old_line.id}"].remove
+end
+# This was test code to see if it got dropped where it should end up
+#page["form-item_#{@item.id}"].replace(render_form_element @item, :show)

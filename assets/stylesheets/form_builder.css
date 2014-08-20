@@ -1,0 +1,419 @@
+@import url("simple.css");
+
+#status {
+    position: absolute;
+    left: 30%;
+    padding: 0.2em;
+    border: 2px solid #aa6;
+    background-color: #ffa;
+}
+
+#status.loading {
+    padding-left: 19px;
+    background-image: url(../images/spinner.gif); /* 15x15 */
+    background-position: 2px center;
+    background-repeat: no-repeat;
+}
+
+#status.success {
+    border: 2px solid #d2f384;
+    background-color: #80ad14;
+}
+
+#status.failure {
+    border: 2px solid #ffd4d4;
+    background-color: #ff5353;
+}
+
+.canvas {
+    background-image: url(../images/canvas_bg.png); /* 15x15 */
+    padding: 1em;
+    clear: left;
+}
+
+.toolbox {
+    display: block;
+    float: left;
+    list-style-type: none;
+    clear: right;
+    cursor: pointer;
+}
+
+.toolbox li {
+    display: block;
+    float: left;
+    margin: 5px;
+
+}
+
+.line {
+    border-top: 4px solid #fff;
+        border-left: 4px solid #fff;
+        border-right: 4px solid #fff;
+        padding: 10px;
+
+}
+
+.properties {
+    width: 20em;
+    background-image: url(../images/canvas_bg.png); /* 15x15 */
+    overflow: auto;
+    position: relative;
+}
+
+.properties-red {
+    width: 20em;
+    background-image: url(../images/p-red.png); /* 15x15 */
+    overflow: auto;
+    position: relative;
+}
+
+.properties-blue {
+    width: 20em;
+    background-image: url(../images/p-blue.png); /* 15x15 */
+    overflow: auto;
+    position: relative;
+}
+
+.properties-green {
+    width: 20em;
+    background-image: url(../images/p-green.png); /* 15x15 */
+    overflow: auto;
+    position: relative;
+}
+
+.wrapper {
+    float: right;
+    clear: right;
+    border: 0;
+    margin-bottom: 1em;
+        margin-left: 5px;
+}
+
+.properties h2 {
+    margin: 0;
+    text-align: center;
+    border-bottom: 5px solid #fff;
+    background: url(../images/h2bg.gif) no-repeat #ababab;
+    background-position: left top;
+    color: #fff;
+    font-weight: normal;
+}
+
+.properties textarea {
+        margin-left: 5px;
+}
+
+.properties ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.properties li {
+    display: block;
+    float: left;
+    clear: both;
+    width: 99%;
+    margin-top: 0.2em;
+}
+
+.properties label {
+    display: block;
+    float: left;
+        margin-left: 5px;
+        height: 30px;
+        width: 30px;
+}
+
+.properties input {
+    display: block;
+    float: left;
+    clear: right;
+        margin-left: 5px;
+}
+
+.properties textarea {
+    display: block;
+    float: left;
+    clear: right;
+        margin-left: 5px;
+}
+
+.properties .save-button {
+    float: right;
+        margin: 5px;
+        border: 0;
+        background: #FFF;
+}
+
+.properties .del {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.form-item.selected {
+    background-color: #ffa;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.element-for-form_group {
+    min-height: 1em;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.label-wrapper label {
+    margin-right: 1em;
+}
+
+/* ******************************************************************************** */
+
+
+.variable-name label {
+        text-indent: -9999px;
+        background: url(../images/item_variable_name.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.variable-name input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.snap-to-rulers label {
+        text-indent: -9999px;
+        background: url(../images/snap_rulers.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.snap-to-rulers input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.form-name label {
+        text-indent: -9999px;
+        background: url(../images/save_form.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.form-name input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.minlength label {
+        text-indent: -9999px;
+        background: url(../images/min_character.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.minlength input {
+        margin-left: 40px;
+}
+
+
+/* ******************************************************************************** */
+
+
+.maxlength label {
+        text-indent: -9999px;
+        background: url(../images/max_character.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.maxlength input {
+        margin-left: 40px;
+}
+
+
+/* ******************************************************************************** */
+
+
+.display_length label {
+        text-indent: -9999px;
+        background: url(../images/character_show.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.display_length input {
+        margin-left: 40px;
+}
+
+
+/* ******************************************************************************** */
+
+
+.display_height label {
+        text-indent: -9999px;
+        background: url(../images/max_lines.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.display_height input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.label label {
+        text-indent: -9999px;
+        background: url(../images/label.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.label input {
+        margin-left: 40px;
+}
+
+
+
+/* ******************************************************************************** */
+
+
+.min label {
+        text-indent: -9999px;
+        background: url(../images/min_value.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.min input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.max label {
+        text-indent: -9999px;
+        background: url(../images/max_value.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.max input {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.cols label {
+        text-indent: -9999px;
+        background: url(../images/columns_display.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.cols input {
+        margin-left: 40px;
+}
+
+
+/* ******************************************************************************** */
+
+.rows label {
+        text-indent: -9999px;
+        background: url(../images/rows_display.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.rows input {
+        margin-left: 40px;
+}
+
+
+
+/* ******************************************************************************** */
+
+
+.maxlines label {
+        text-indent: -9999px;
+        background: url(../images/max_lines.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.maxlines input {
+        margin-left: 40px;
+}
+
+
+/* ******************************************************************************** */
+
+
+.contents label {
+        text-indent: -9999px;
+        background: url(../images/type_text.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.contents textarea {
+        margin-left: 40px;
+}
+
+/* ******************************************************************************** */
+
+
+.options label {
+        text-indent: -9999px;
+        background: url(../images/options.png) no-repeat;
+        background-position: left;
+        margin-bottom: 5px;
+        height: 30px;
+        display: block;
+}
+
+.options textarea {
+        margin-left: 40px;
+}

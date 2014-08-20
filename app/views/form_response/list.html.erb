@@ -1,0 +1,21 @@
+<h1>Responses for form <%= @form.name %></h1>
+
+<table>
+  <tr>
+    <th>Filled in</th>
+    <th>Last updated</th>
+    <th colspan="1"></th>
+  </tr>
+<% @responses.each do |response| %>
+  <tr>
+    <td><%= response.created_at.to_formatted_s(:short) %></td>
+    <td><%= response.updated_at.to_formatted_s(:short) %></td>
+    <td><%= link_to(formbuilder_image_tag("show.png"), :action => 'show', :id => response.id) %></td>
+    <td><%= form_tag(:action => 'destroy', :id => response.id, :form_id => response.form.id) do %><%= tag :input, {:class => 'post-link', :type => 'image', :src => (formbuilder_image_path("destroy.png")), :value => 'Destroy'} %><% end %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @responses %>
+
+<%= link_to "Back to form list", :controller => "form", :action => "list" %>

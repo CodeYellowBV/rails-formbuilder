@@ -1,0 +1,30 @@
+<div id="status" style="display: none"></div>
+<%= render_cell :form, :toolbox %>
+<!-- wrappers are needed for scriptaculous :( -->
+<div id="form-properties-wrapper" class="wrapper"><%= render_form_element @form, :properties %></div>
+<div id="item-properties-wrapper" class="wrapper" style="display: none"><div id="item-properties" class="item-properties properties"></div></div>
+<%= render_form_element @form, :show %>
+<%= link_to("Go back to list of forms", :action => "list") %>
+<%= link_to("Export to XML", :action => "export", :id => @form) %>
+<script type="text/javascript">
+Ajax.Responders.register({
+  onCreate: function(requester, xhr) {
+    $('status').update('please wait...');
+    $('status').show();
+    $('status').className = 'loading';
+    var oldSucc = requester.options.onSuccess;
+    requester.options.onSuccess = function() {
+      $('status').className = 'success';
+      $('status').hide(); // The action is supposed to show it if there is content
+      $('status').update('');
+      if (oldSucc) oldSucc.apply(this, arguments);
+    };
+    var oldFail = requester.options.onFailure;
+    requester.options.onFailure = function() {
+      $('status').className = 'failure';
+      $('status').update('There was an error contacting the server!');
+      if (oldFail) oldFail.apply(this, arguments);
+    }
+  }
+});
+</script>

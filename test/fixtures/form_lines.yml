@@ -1,0 +1,10 @@
+personal_line1:
+  id: 1
+  line_group_id: 1 # personal_info_form
+  line_group_type: "Form"
+  position: 1
+personal_line2:
+  id: 2
+  line_group_id: 1 # personal_info_form
+  line_group_type: "Form"
+  position: 2

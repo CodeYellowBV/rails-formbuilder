@@ -1,0 +1,18 @@
+name:
+  id: 1
+  type: "TextControl"
+  form_line_id: 1 # personal_info_form, line 1
+  form_id: 1
+  offset: 0
+street_number:
+  id: 2
+  type: "IntegerControl" # number
+  form_line_id: 2 # personal_info_form, line 2
+  form_id: 1
+  offset: 80
+address:
+  id: 3
+  type: "TextControl"
+  form_line_id: 2 # personal_info_form, line 2
+  form_id: 1
+  offset: 0

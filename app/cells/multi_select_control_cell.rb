@@ -1,0 +1,2 @@
+class MultiSelectControlCell < SelectControlCell
+end

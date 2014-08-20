@@ -1,0 +1,17 @@
+<% @opts[:list].each do |entry| %>
+<%   if entry.is_a?(Hash) %>
+<label>
+<% if @form_response.item_value(@item).nil? %>
+<input type="checkbox" name="form_items[<%=@item.id%>][]" value="<%= h entry[:value] %>" <%= 'checked="checked"' if entry[:default] %> />
+<% else %>
+<input type="checkbox" name="form_items[<%=@item.id%>][]" value="<%= h entry[:value] %>" <%= 'checked="checked"' if @form_response.item_value(@item).include?(entry[:value]) %> />
+<% end %>
+<%= h entry[:name] %>
+</label>
+<%   elsif entry.is_a?(Array) %>
+<fieldset>
+  <legend><%= entry[0] %></legend>
+<%=    render_form_element @item, :render_edit_list, :list => entry[1..-1] %>
+</fieldset>
+<%   end %>
+<% end %>

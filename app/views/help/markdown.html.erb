@@ -1,0 +1,62 @@
+<h1>Markdown syntax</h1>
+
+<p>When you create a form item which can present text, you can also add a
+    few dashes of markup to that text.  This is done by using a specialized
+    syntax called "Markdown".  This sounds difficult, but in fact Markdown
+    was designed to be as easy to use as possible.  This is done by using
+    natural syntax most people already use in text-only e-mails.  Here are
+    a few examples:</p>
+
+<% example = <<EOF
+A short story
+=============
+
+I want to *emphasize* that this is a *short* story.  It's not a _long_ story.
+Why it isn't a long story?  Now **that's** a long story!
+
+Todo
+----
+
+In the short story we have a list of things we want to do:
+
+1. Read about Markdown
+2. Use Markdown
+3. Look at the result
+
+## Alternatives
+
+As you can see above there are two ways of making a level 2 heading:
+
+* By prefixing it with 2 pound (#) signs
+* By underlining it with minus (-) signs
+
+This above list can be written like this, too:
+
+- By prefixing it with 2 pound (#) signs
+- By underlining it with minus (-) signs
+
+But also like this:
+
++ By prefixing it with 2 pound (#) signs
++ By underlining it with minus (-) signs
+
+
+There is no way to make headers at a level below 2 by underlining them,
+but you can prefix them with up to six pound signs.
+EOF
+%>
+
+<pre>
+<code>
+<%= h example %>
+</code>
+</pre>
+
+<p>This will look like the following in the form:</p>
+
+<%= markdown(example) %>
+
+<p>If you would like to know more about Markdown, you can read the
+  more detailed and technical documentation on
+  <a href="http://daringfireball.net/projects/markdown/syntax">its inventor's
+  website</a>.</p>

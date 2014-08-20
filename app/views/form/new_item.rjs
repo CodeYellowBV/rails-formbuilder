@@ -1,0 +1,14 @@
+if params[:formgroup_id]
+  page.insert_html :bottom, "form-item_#{@formgroup.id}", render_form_element(@line, :show)
+elsif params[:line_id]
+  page.insert_html :bottom, "line_#{@line.id}", render_form_element(@item, :show)
+
+  # From form_item/properties.rjs
+  page["item-properties-wrapper"].hide
+  page["item-properties"].replace_html render_form_element(@item, :properties)
+  page.visual_effect :slide_down, "item-properties-wrapper"
+  page.select('.selected').each {|e| e.remove_class_name('selected') }
+  page["form-item_#{@item.id}"].add_class_name('selected')
+else
+  page.insert_html :bottom, 'canvas', render_form_element(@line, :show)
+end

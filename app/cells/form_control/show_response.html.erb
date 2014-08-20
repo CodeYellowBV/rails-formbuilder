@@ -1,0 +1,4 @@
+<%= form_item_start(@item) %>
+<%= @item.get_property_value(:label) %>:
+<%= @form_response.item_value(@item) || "" %>
+<%= form_item_end(@item) %>

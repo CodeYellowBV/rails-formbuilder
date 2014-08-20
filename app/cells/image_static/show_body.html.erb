@@ -1,0 +1,1 @@
+<img src="<%= url_for :controller => "form_item", :action => "render_data", :id => @item.id, :timestamp => Time.now.to_i %>" alt="<%= h @item.get_property_value(:contents) %>" />

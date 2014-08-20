@@ -1,0 +1,79 @@
+<h1>CQL syntax</h1>
+
+<p>If you have a form item which is dependent on another form item, you can
+    use a specialized syntax called "Conditional Query Language". This
+    mini-language is designed to be very similar to SQL's <code>WHERE</code>
+    clause, allowing the user to describe when the item should be displayed in
+    a very flexible way.</p>
+
+<p>CQL consists of very simple algebraic operators and you can refer to the
+    dynamic value of other items by referring to their "variable name" property.
+    For example, to show an item whenever item <code>pressure</code> is greater
+    than the value of item <code>temperature</code> multiplied by two, you would
+    simply enter the following:</p>
+
+<pre>
+  <code>
+    pressure &gt; temperature * 2
+  </code>
+</pre>
+
+<p>A more complicated example to see if the pressure exceeds the temperature and
+   either the temperature is below zero or the pressure is above 10:</p>
+
+<pre>
+  <code>
+    pressure &gt; temperature AND (temperature &lt; 0 OR pressure &gt; 10)
+  </code>
+</pre>
+
+<p>CQL also has a few functions. For example, here we check if the
+    lowest of the two values is greater than 100:</p>
+
+<pre>
+  <code>
+    min(pressure, temperature * 2) &gt; 100
+  </code>
+</pre>
+
+<h2>Operators</h2>
+
+CQL currently knows the following operators, in order of precedence:
+
+<ol>
+  <li><code>(</code> and <code>)</code> for grouping statements together to override precedence.</li>
+  <li><code>*</code> and <code>/</code> for multiplication and division.</li>
+  <li><code>+</code> and <code>-</code> for addition and subtraction.</li>
+  <li><code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;=</code> for less than (or equal) and greater than (or equal),
+      <code>=</code> for equal and <code>&lt;&gt;</code>, <code>&gt;&lt;</code> or <code>!=</code> for "not equal".</li>
+  <li><code>IN</code> for occurrence in lists (select fields produce lists).</li>
+  <li><code>AND</code> for logical conjunction (both operands must be true).</li>
+  <li><code>OR</code> for logical disjunction (one of the two operands must be true).</li>
+</ol>
+
+Operator names are case-insensitive, variable names are currently case sensitive.
+
+<h2>functions</h2>
+
+CQL knows about the following functions:
+
+<ul>
+  <li><code>min(a, b, ...)</code> returns the <em>lowest</em> value of all its arguments or <code>NULL</code> if zero arguments are supplied.</li>
+  <li><code>max(a, b, ...)</code> returns the <em>highest</em> value of all its arguments or <code>NULL</code> if zero arguments are supplied.</li>
+</ul>
+
+<h2><code>NULL</code> values</h2>
+
+<p>When a value is missing, CQL uses a <code>NULL</code> value (just like
+SQL). This value is neither equal to anything nor unequal to anything,
+including itself. When you compare it to something, the resulting
+value is always <code>NULL</code>.</p>
+
+<p><code>x AND null</code> is <code>NULL</code> if <code>x</code> is
+true. Otherwise it is false.</p>
+
+<p><code>x OR null</code> is <code>NULL</code> if <code>x</code> is
+false. Otherwise it is true.</p>
+
+<p>Values are considered to be missing if the user didn't fill in a valid
+value, or the field itself is not visible.</p>

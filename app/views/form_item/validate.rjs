@@ -1,0 +1,13 @@
+if @item_value.valid?
+  page["form-item_#{@item.id}"].remove_class_name 'invalid'
+  page << "if ($('form-item-errors_#{@item.id}').visible())"
+  page.visual_effect :blind_up, "form-item-errors_#{@item.id}"
+else
+  page["form-item_#{@item.id}"].add_class_name 'invalid'
+  page["form-item-errors_#{@item.id}"].replace_html(error_list(@item_value))
+  page << "if (!$('form-item-errors_#{@item.id}').visible())"
+  page.visual_effect :blind_down, "form-item-errors_#{@item.id}"
+  page << "else"
+  page.visual_effect :highlight, page.literal("$('form-item-errors_#{@item.id}').down()")
+end
+

@@ -1,0 +1,11 @@
+<h2>Item properties</h2>
+<%= link_to(formbuilder_image_tag("delete.png", :alt => "[delete]", :class => "del"), {:controller => "form_item", :action => "delete", :id => @item.id}, :remote => true) %>
+<%= iframe_remote_tag({:controller => "form_item", :action => "update_properties", :id => @item.id}, :multipart => true) do -%>
+  <%= render_form_element @item, :attributes %>
+  <ul class="properties-for-<%= @item.class.name.underscore %>">
+    <%- @item.class.properties.each_pair do |name, description| -%>
+      <li class="<%= h name %>"><%= render_form_element @item, "render_property", :property => name %></li>
+    <%- end -%>
+  </ul>
+<input type="submit" value="save" class="save-button" />
+<% end -%>

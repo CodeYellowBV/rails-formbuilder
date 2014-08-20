@@ -1,0 +1,15 @@
+<% @opts[:list].each do |entry| %>
+<%   if entry.is_a?(Hash) %>
+<% if @form_response.item_value(@item).nil? %>
+<option value="<%= h entry[:value] %>" <%= 'selected="selected"' if entry[:default] %> />
+<% else %>
+<option value="<%= h entry[:value] %>" <%= 'selected="selected"' if @form_response.item_value(@item).include?(entry[:value]) %> />
+<% end %>
+<%= h entry[:name] %>
+</option>
+<%   elsif entry.is_a?(Array) %>
+<optgroup label="<%= entry[0] %>">
+<%=    render_form_element @item, :render_edit_list, :list => entry[1..-1] %>
+</optgroup>
+<%   end %>
+<% end %>

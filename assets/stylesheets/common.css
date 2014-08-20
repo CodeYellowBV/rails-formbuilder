@@ -1,0 +1,24 @@
+body {
+    font: 0.8em "DeJaVu Sans","Verdana",sans-serif;
+}
+
+a img {
+    border: none;
+}
+
+.form-item h1, .form-item h2, .form-item h3, .form-item h4, .form-item h5, .form-item h6, .form-item p {
+    margin: 0;
+    padding: 0;
+}
+
+.errors {
+    background-color: #faa;
+    clear: both;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0.5em;
+}
+
+.errors li {
+    padding: 0.1em 0.3em;
+}

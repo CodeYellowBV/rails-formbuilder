@@ -1,0 +1,9 @@
+@items.each do |item|
+  if @form_response.visible?(item)
+    page << "if (!$('form-item_#{item.id}').visible())"
+    page.visual_effect :blind_down, "form-item_#{item.id}"
+  else
+    page << "if ($('form-item_#{item.id}').visible())"
+    page.visual_effect :blind_up, "form-item_#{item.id}"
+  end
+end

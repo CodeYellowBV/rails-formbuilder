@@ -1,0 +1,5 @@
+<div class="line" id="line_<%= @line.id %>" style="overflow: auto; float: left; width: 100%">
+<%- @line.form_items.each do |item| -%>
+<%= render_form_element item, @cell.state_name -%>
+<%- end -%>
+</div>

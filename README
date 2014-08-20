@@ -1,0 +1,85 @@
+Form builder plugin
+===================
+
+The form builder plugin allows you to create forms in your application in
+a WYSIWYG fashion.  By dragging items onto a canvas, forms are built by
+the user.
+
+Creating custom form item types is easy: Just create a model for it that
+inherits from one of the existing form item types (or just the base
+class: FormItem) and a cell which has the name of the model, with a
+suffix of 'Cell'.  The cell class must inherit from the cell that
+belongs to the superclass of the model.  So, for example, if you have
+a SmartIntegerControl model that inherits from IntegerControl, you need
+a SmartIntegerControlCell class that inherits from IntegerControlCell.
+
+After creating your custom form item types you must register them with
+the FormBuilder module so it knows about them, for example:
+FormBuilder.register_classes(:smart_integer_control, :my_other_control).
+
+You can modify or enhance existing models and cells like you would with
+any Engine; just place a class in your app with the same name as the one
+you would like to modify, then put any new or overriden methods in it.
+If you only want to override a view for a cell state, you just put a
+view with the same name in your app directory and it will be used
+instead of the one in the plugin.
+
+Requirements
+============
+
+The formbuilder was created and tested with Rails 1.2
+It might work with Rails 1.1 or rails 2.0.  Please let us know
+if you have tested it under a different Rails version so we can
+update this information.
+
+Gems
+----
+
+To make formbuilder work properly, you will need the following gems
+installed:
+
+- bluecloth
+
+You might be able to do without it if you disable the use of
+InformationalStatic form elements.
+
+If bluecloth fails to build (if you are running Ruby 1.8.5), try
+http://blog.nezz.be/2008/08/12/sqlite3-on-centos-5.2-with-ruby-1.8.5.html
+In case it might be gone, here are the steps:
+
+In /usr/lib64/ruby/1.8/x86_64-linux/ruby.h, add the following two lines:
+#define RSTRING_PTR(s) (RSTRING(s)->ptr)
+#define RSTRING_LEN(s) (RSTRING(s)->len)
+
+around line 430
+
+Plugins
+-------
+
+You will need the engines plugin (http://railsengines.org), the Cells
+plugin (http://cells.rubyforge.org) and the acts_as_list plugin
+(http://dev.rubyonrails.org/svn/rails/plugins/acts_as_list).  It was
+tested against revision 9250 of the acts_as_list plugin.
+
+LICENSE
+=======
+Copyright (c)2008-2009 Solide ICT (http://www.solide-ict.nl)
+Initial development sponsored by the MAPS Foundation (http://www.mapsfoundation.org)
+
+This work falls under a Creative Commons 'by-nc-sa' license, except
+where declared otherwise.  This license has the following attributes:
+
+You are free:
+* To share -- To copy, distribute and transmit the work
+* To remix -- To adapt the work
+
+Under the following conditions:
+* Attribution -- You must attribute the work in the manner specified by
+   the author or licensor (but not in any way that suggests that they endorse
+   you or your use of the work)
+* Noncommercial -- You may not use this work for commercial purposes
+* Share Alike -- If you alter, transform, or build upon this work, you
+   may distribute the resulting work only under the same or similar license to this one.
+
+For more information, see:
+http://creativecommons.org/licenses/by-nc-sa/3.0/

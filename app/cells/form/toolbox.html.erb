@@ -1,0 +1,13 @@
+<% klasses = FormBuilder.get_classes -%>
+<% if !klasses.empty? -%>
+<ul class="toolbox" id="<%= @opts[:id] || 'toolbox' %>">
+<%-   klasses .each do |klass| -%>
+<%-     if klass.concrete_item? -%>
+<li><%= render_cell klass.name.underscore, :tool -%></li>
+<%-     end -%>
+<%-   end -%>
+</ul>
+<%- end -%>
+<script type="text/javascript">
+  new Toolbox("<%= @opts[:id] || 'toolbox' %>", "tool");
+</script>

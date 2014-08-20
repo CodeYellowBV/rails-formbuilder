@@ -1,0 +1,5 @@
+page.visual_effect :slide_up, "item-properties-wrapper"
+page["form-item_#{@item.id}"].get_item.destroy
+if @item.form_line.form_item_ids.empty?
+  page["line_#{@item.form_line.id}"].remove
+end

@@ -1,0 +1,5 @@
+<%= form_item_start(@item) %>
+<%  @item.form_lines.each do |line| %>
+<%=   render_form_element line, :show %>
+<%  end %>
+<%= form_item_end(@item) %>

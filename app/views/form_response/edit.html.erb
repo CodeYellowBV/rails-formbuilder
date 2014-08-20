@@ -1,0 +1,6 @@
+<%= form_tag({}, :id => 'form') do %>
+<input type="hidden" id="form_id" name="form_id" value="<%= @form.id %>" />
+<%= render_form_element @form, :edit_response %>
+<input type='submit' value='submit' />
+<% end %>
+<%= link_to("Cancel and go back to list of forms", :controller => "form", :action => "list") %>

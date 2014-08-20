@@ -1,0 +1,3 @@
+<% [:notice, :warning, :message, :error].each do |thing| %>
+<div id='<%= thing %>'><%= flash[thing] %></div>
+<% end %>

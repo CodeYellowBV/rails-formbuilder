@@ -1,0 +1,6 @@
+personal_info_form:
+  id: 1
+  name: "Personal information"
+empty_form:
+  id: 2
+  name: "An empty form"

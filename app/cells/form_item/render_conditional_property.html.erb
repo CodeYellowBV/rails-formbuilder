@@ -1,0 +1,3 @@
+<%= render_form_element @item, :render_property_label, :property => @property %>
+<textarea id='<%= property_id %>' name='properties[<%= @property.name %>]'><%= @property.value %></textarea>
+<span class="help">You can use <%= link_to("CQL syntax", {:controller => "help", :action => "cql"}, :target => "_blank") %> here.</span>

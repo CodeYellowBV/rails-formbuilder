@@ -1,0 +1,9 @@
+<h1>Form response for form <%= @form_response.form.name %></h1>
+
+<script type="text/javascript">
+  // Quick hack so we don't get errors on the console because of the form_item emitted JS code
+  FormItem = function() { };
+</script>
+<%= render_form_element @form_response.form, :show_response %>
+
+<%= link_to("Back to list of responses", :controller => "form_response", :action => "list", :id => @form_response.form.id) %>

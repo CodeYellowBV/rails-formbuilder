@@ -1,0 +1,3 @@
+<select name="form_items[<%= @item.id %>][]">
+<%= render_form_element @item, :render_edit_list, :list => @item.get_property_value(:options) %>
+</select>

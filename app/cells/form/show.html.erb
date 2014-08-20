@@ -1,0 +1,11 @@
+<div id="canvas" class="canvas" style="overflow: auto">
+<div id="ruler" class="ruler" style="overflow: auto"></div>
+  <% @form.form_lines.each do |line| -%>
+    <%= render_form_element line, :show -%>
+  <%- end %>
+</div>
+<script type="text/javascript">
+  var canvas = new FormCanvas("canvas", "tool", <%= @form.id %>);
+  var ruler = new Ruler("ruler", "<%= formbuilder_image_path('ruler_repos.png') %>", "<%= formbuilder_image_path('ruler_marker.png') %>", canvas);
+  <%= (@form.ruler_positions || []).inspect %>.each(ruler.addMarker.bind(ruler));
+</script>
