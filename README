@@ -27,10 +27,7 @@ instead of the one in the plugin.
 Requirements
 ============
 
-The formbuilder was created and tested with Rails 1.2
-It might work with Rails 1.1 or rails 2.0.  Please let us know
-if you have tested it under a different Rails version so we can
-update this information.
+The most recent version was tested against Rails 3.0 with Ruby 1.9.
 
 Gems
 ----
@@ -43,7 +40,7 @@ installed:
 You might be able to do without it if you disable the use of
 InformationalStatic form elements.
 
-If bluecloth fails to build (if you are running Ruby 1.8.5), try
+If bluecloth fails to build (and you are running Ruby 1.8.5), try
 http://blog.nezz.be/2008/08/12/sqlite3-on-centos-5.2-with-ruby-1.8.5.html
 In case it might be gone, here are the steps:
 
@@ -56,14 +53,37 @@ around line 430
 Plugins
 -------
 
-You will need the engines plugin (http://railsengines.org), the Cells
-plugin (http://cells.rubyforge.org) and the acts_as_list plugin
+You will need the Cells plugin (http://cells.rubyforge.org) and the
+acts_as_list plugin
 (http://dev.rubyonrails.org/svn/rails/plugins/acts_as_list).  It was
-tested against revision 9250 of the acts_as_list plugin.
+tested against SVN revision 9250 of the acts_as_list plugin.
+
+You will also need gettext, or put this in lib/gettext_stub.rb:
+
+  module GetText
+    def N_(str)
+      str
+    end
+    def _(str)
+      str
+    end
+  end
+
+This must then be loaded in your config/environment.rb
+
+Helpers
+-------
+
+In your application.rb, put the following require statement to load
+the helpers provided by this engine:
+
+  require_dependency("#{Rails.root}/vendor/plugins/formbuilder/app/helpers/application_helper.rb")
+
 
 LICENSE
 =======
 Copyright (c)2008-2009 Solide ICT (http://www.solide-ict.nl)
+Copyright (c)2014 Code Yellow BV (http://www.codeyellow.nl)
 Initial development sponsored by the MAPS Foundation (http://www.mapsfoundation.org)
 
 This work falls under a Creative Commons 'by-nc-sa' license, except

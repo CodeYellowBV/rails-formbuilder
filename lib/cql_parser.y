@@ -101,11 +101,11 @@ end
 
 def to_func(name)
   name.sub!(/\s+/, '_')
-  name.downcase!
+  name = name.downcase.to_sym
   if CQL::Procedures.instance_methods.include?(name)
-    name.to_sym
+    name
   else
-    raise TypeError.new("Unknown procedure '#{name}'")
+    raise TypeError.new("Unknown procedure '#{name}'. GOT: '#{CQL::Procedures.instance_methods}'")
   end
 end
 

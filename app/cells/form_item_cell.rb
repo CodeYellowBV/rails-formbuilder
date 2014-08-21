@@ -136,7 +136,8 @@ class FormItemCell < Cell::Base
   def xml_import
     @item.offset = @opts[:xml].attribute(:offset).to_s.to_f
     @item.variable_name = @opts[:xml].attribute(:variable_name).to_s
-    REXML::XPath.each(@opts[:xml], 'property') do |@xml|
+    REXML::XPath.each(@opts[:xml], 'property') do |xml|
+      @xml = xml
       self.render_state(:xml_import_property)
     end
     ""

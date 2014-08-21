@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 # Need to have this here or activerecord will complain... sigh!
 class PINNumberTest < FormItem

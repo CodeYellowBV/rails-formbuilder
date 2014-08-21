@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 # Ruby does not allow me to define classes inside methods, so they are defined here
 class Foo < FormItem

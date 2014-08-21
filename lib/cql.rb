@@ -8,7 +8,7 @@ module CQL
   # nil values, as unresolved variables shouldn't cause the application
   # to come crashing down.
   class Procedures
-    instance_methods.each { |m| undef_method m unless m =~ /^__/ }
+    instance_methods.each { |m| undef_method m unless m =~ /^__|^object_id$/ }
 
     [:"<", :">", :"<=", :">=", :"-", :"+", :"/", :"*"].each do |method|
       define_method(method) do |a, b|

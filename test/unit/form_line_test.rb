@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class FormLineTest < ActiveSupport::TestCase
   fixtures :forms, :form_lines, :form_items
