@@ -1,5 +1,4 @@
 class TextAreaControlCell < TextControlCell
-  include ActionView::Helpers::OutputSafetyHelper
   def show_body
     raw("<textarea rows='#{@item.get_property_value(:rows)}' cols='#{@item.get_property_value(:cols)}'></textarea>")
   end

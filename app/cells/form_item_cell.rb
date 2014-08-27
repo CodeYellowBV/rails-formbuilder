@@ -11,6 +11,7 @@ require 'rexml/xpath'
 # Every subclass of FormItem must have a matching Cell.
 class FormItemCell < Cell::Base
   helper :application
+  include ActionView::Helpers::OutputSafetyHelper
 
   def initialize(controller, options={})
     super

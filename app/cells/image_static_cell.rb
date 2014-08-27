@@ -1,5 +1,4 @@
 class ImageStaticCell < FormStaticCell
-  include ActionView::Helpers::OutputSafetyHelper
   def render_image_property
     self.render_state(:render_property_label) + raw("<input id='#{property_id}' type='file' name='properties[#{@property.name}]' />")
   end

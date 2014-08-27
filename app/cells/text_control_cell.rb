@@ -1,5 +1,4 @@
 class TextControlCell < FormControlCell
-  include ActionView::Helpers::OutputSafetyHelper
   def show_body
     raw("<input type='text' value='' />")
   end

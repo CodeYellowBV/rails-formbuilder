@@ -1,6 +1,4 @@
 class InformationalStaticCell < FormStaticCell
-  include ActionView::Helpers::OutputSafetyHelper
-
   # Render the content as a textarea
   def render_contents_property
     render
