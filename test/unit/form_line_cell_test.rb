@@ -2,7 +2,7 @@ require 'test_helper'
 
 require 'rexml/document'
 
-class FormLineTest < ActiveSupport::TestCase
+class FormLineCellTest < ActiveSupport::TestCase
   def test_xml_export
     l = FormLine.new()
 
