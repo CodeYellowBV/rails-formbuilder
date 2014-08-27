@@ -16,12 +16,12 @@ class FormItemCell < Cell::Base
     super
     @cell = self
     @controller = controller
-    @item = @opts[:element]
-    @form = @opts[:form]
-    @form_response = @opts[:form_response]
+    @item = options[:element]
+    @form = options[:form]
+    @form_response = options[:form_response]
     @item_value = @form_response.form_item_values.detect {|v| v.form_item_id == @item.id } if @form_response
-    @opts.delete(:element)
-    @opts.delete(:form_response)
+    options.delete(:element)
+    options.delete(:form_response)
   end
 
   # Get the class of the model that belongs to this Cell.
@@ -59,16 +59,16 @@ class FormItemCell < Cell::Base
   # render_<property name>_property method and calls it if there is.
   # Otherwise, it will simply call render_generic_text_property.
   #
-  # The property name is taken from @opts[:property].
+  # The property name is taken from options[:property].
   #
   # It will set @property to the property for the item, or
   # a new property if that property does not yet exist.
   #
   # It will append an UL of class "errors" to the resulting output
   def render_property
-    @property = @item.get_property(@opts[:property]) || FormItemProperty.new(:name => @opts[:property], :form_item => @item)
-    if self.respond_to?("render_#{@opts[:property]}_property")
-      res = self.render_state "render_#{@opts[:property]}_property"
+    @property = @item.get_property(options[:property]) || FormItemProperty.new(:name => options[:property], :form_item => @item)
+    if self.respond_to?("render_#{options[:property]}_property")
+      res = self.render_state "render_#{options[:property]}_property"
     else
       res = self.render_state :render_generic_text_property
     end
@@ -83,7 +83,7 @@ class FormItemCell < Cell::Base
   end
 
   def render_property_label
-    @property ||= @opts[:property] # XXX Clean this up!
+    @property ||= options[:property] # XXX Clean this up!
     raw("<label title='#{ERB::Util.html_escape(@item.class.get_property_description(@property.name))}' for='#{property_id}'>#{ERB::Util.html_escape(@item.class.get_property_description(@property.name))}</label>")
   end
 
@@ -114,14 +114,14 @@ class FormItemCell < Cell::Base
   # xml_export_<property name>_property method and calls it if there is.
   # Otherwise, it will simply call xml_export_generic_text_property.
   #
-  # The property name is taken from @opts[:property].
+  # The property name is taken from options[:property].
   #
   # It will set @property to the property for the item, or
   # a new property if that property does not yet exist.
   def xml_export_property
-    @property = @item.get_property(@opts[:property]) || FormItemProperty.new(:name => @opts[:property], :form_item => @item)
-    if self.respond_to?("xml_export_#{@opts[:property]}_property")
-      res = self.render_state "xml_export_#{@opts[:property]}_property"
+    @property = @item.get_property(options[:property]) || FormItemProperty.new(:name => options[:property], :form_item => @item)
+    if self.respond_to?("xml_export_#{options[:property]}_property")
+      res = self.render_state "xml_export_#{options[:property]}_property"
     else
       res = self.render_state :xml_export_generic_text_property
     end
@@ -133,9 +133,9 @@ class FormItemCell < Cell::Base
   end
 
   def xml_import
-    @item.offset = @opts[:xml].attribute(:offset).to_s.to_f
-    @item.variable_name = @opts[:xml].attribute(:variable_name).to_s
-    REXML::XPath.each(@opts[:xml], 'property') do |xml|
+    @item.offset = options[:xml].attribute(:offset).to_s.to_f
+    @item.variable_name = options[:xml].attribute(:variable_name).to_s
+    REXML::XPath.each(options[:xml], 'property') do |xml|
       @xml = xml
       self.render_state(:xml_import_property)
     end

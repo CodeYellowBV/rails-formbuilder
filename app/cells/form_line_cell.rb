@@ -10,11 +10,11 @@ class FormLineCell < Cell::Base
     super
     @controller = controller
     @cell = self
-    @line = @opts[:element]
-    @form = @opts[:form]
-    @form_response = @opts[:form_response]
-    @opts.delete(:element)
-    @opts.delete(:form_response)
+    @line = options[:element]
+    @form = options[:form]
+    @form_response = options[:form_response]
+    options.delete(:element)
+    options.delete(:form_response)
   end
 
   # Get the class of the model that belongs to this Cell.
@@ -38,7 +38,7 @@ class FormLineCell < Cell::Base
   def xml_export; render; end
 
   def xml_import
-    REXML::XPath.each(@opts[:xml], 'item') do |el|
+    REXML::XPath.each(options[:xml], 'item') do |el|
       begin
         type = el.attribute(:type).to_s
         item = type.camelize.constantize.new(:form_line => @line, :form => @form)

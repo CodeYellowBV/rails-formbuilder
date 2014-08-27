@@ -27,7 +27,7 @@ instead of the one in the plugin.
 Requirements
 ============
 
-Version 1.0 was tested against Rails 3.0 with Ruby 1.9.
+Version 1.0 was tested against Rails 3.1 with Ruby 1.9 and Cells 3.5.
 
 Gems
 ----

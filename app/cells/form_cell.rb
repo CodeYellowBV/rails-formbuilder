@@ -6,10 +6,10 @@ class FormCell < Cell::Base
     super
     @controller = controller
     @cell = self
-    @form = @opts[:element]
-    @form_response = @opts[:form_response]
-    @opts.delete(:element)
-    @opts.delete(:form_response)
+    @form = options[:element]
+    @form_response = options[:form_response]
+    options.delete(:element)
+    options.delete(:form_response)
   end
 
   # Render the toolbox.  This is an ul with li's in it which contain the tools.
@@ -33,9 +33,9 @@ class FormCell < Cell::Base
   def xml_export; render; end
 
   def xml_import
-    @form.name = @opts[:xml].attribute(:name).to_s
-    @form.ruler_positions = REXML::XPath.match(@opts[:xml], 'rulerpos/pos').map {|el| el.text.to_f }
-    REXML::XPath.each(@opts[:xml], 'line') do |el|
+    @form.name = options[:xml].attribute(:name).to_s
+    @form.ruler_positions = REXML::XPath.match(options[:xml], 'rulerpos/pos').map {|el| el.text.to_f }
+    REXML::XPath.each(options[:xml], 'line') do |el|
       line = FormLine.new(:line_group => @form)
       @form.form_lines << line
       render_cell_to_string(:form_line, :xml_import, :element => line, :xml => el, :form => @form)
