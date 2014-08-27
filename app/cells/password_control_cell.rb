@@ -1,6 +1,6 @@
 # A text control which accepts only passwords
 class PasswordControlCell < TextControlCell
-  include ActionView::Helpers::RawOutputHelper
+  include ActionView::Helpers::OutputSafetyHelper
   def show_body
     raw("<input type='password' value='' />")
   end
