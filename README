@@ -27,7 +27,7 @@ instead of the one in the plugin.
 Requirements
 ============
 
-The most recent version was tested against Rails 3.0 with Ruby 1.9.
+Version 1.0 was tested against Rails 3.0 with Ruby 1.9.
 
 Gems
 ----
