@@ -10,7 +10,7 @@
 # be displayed in context close to the FormControl.  They would belong
 # semantically in another DIV, which means they're semantically separated.
 class FormControl < FormItem
-  has_properties :label => ["Label", lambda {self.class.name.underscore.sub(/_control/, '')} ]
+  has_properties :label => ["Label", proc {self.class.name.underscore.sub(/_control/, '')} ]
 
   validates_presence_of :variable_name, :message => N_("You must specify a variable name")
   # XXX This is broken.  Looks like it might be fixed in Rails 2.0
