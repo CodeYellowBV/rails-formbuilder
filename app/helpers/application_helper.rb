@@ -23,7 +23,7 @@ module ApplicationHelper
 
   # Override this if you want to override image paths used by form builder
   def formbuilder_image_path(filename)
-    if File.exists?(asset_file_path("/plugin_assets/formbuilder/images/#{filename}"))
+    if File.exists?("#{Rails.root}/public/plugin_assets/formbuilder/images/#{filename}")
       image_path("/plugin_assets/formbuilder/images/#{filename}")
     else
       image_path(filename)

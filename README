@@ -27,36 +27,24 @@ instead of the one in the plugin.
 Requirements
 ============
 
-Version 1.0 was tested against Rails 3.1 with Ruby 1.9 and Cells 3.5.
+Version 1.1 was tested against Rails 3.1 with Ruby 1.9.
 
 Gems
 ----
 
 To make formbuilder work properly, you will need the following gems
-installed:
+installed.  The version numbers in brackets are the ones we've tested
+against.
 
-- bluecloth
+- bluecloth [2.2.0]
+- acts_as_list [0.4.0]
+- cells (https://github.com/apotonick/cells) [3.5.0]
 
-You might be able to do without it if you disable the use of
+You might be able to do without BlueCloth if you disable the use of
 InformationalStatic form elements.
 
-If bluecloth fails to build (and you are running Ruby 1.8.5), try
-http://blog.nezz.be/2008/08/12/sqlite3-on-centos-5.2-with-ruby-1.8.5.html
-In case it might be gone, here are the steps:
-
-In /usr/lib64/ruby/1.8/x86_64-linux/ruby.h, add the following two lines:
-#define RSTRING_PTR(s) (RSTRING(s)->ptr)
-#define RSTRING_LEN(s) (RSTRING(s)->len)
-
-around line 430
-
-Plugins
--------
-
-You will need the Cells plugin (http://cells.rubyforge.org) and the
-acts_as_list plugin
-(http://dev.rubyonrails.org/svn/rails/plugins/acts_as_list).  It was
-tested against SVN revision 9250 of the acts_as_list plugin.
+Libraries
+---------
 
 You will also need gettext, or put this in lib/gettext_stub.rb:
 
@@ -69,7 +57,12 @@ You will also need gettext, or put this in lib/gettext_stub.rb:
     end
   end
 
-This must then be loaded in your config/environment.rb
+This must then be loaded in your config/environment.rb, by putting this
+*before* your `App.initialize!`
+
+  require "#{Rails.root}/lib/gettext_stub.rb"
+  include GetText
+
 
 Helpers
 -------
