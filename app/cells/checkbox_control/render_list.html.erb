@@ -1,7 +1,7 @@
-<% if @opts[:list].blank? %>
+<% if @list.blank? %>
 [no checkboxes defined]
 <% else %>
-<%   @opts[:list].each do |entry| %>
+<%   @list.each do |entry| %>
 <%     if entry.is_a?(Hash) %>
 <label>
 <input type="checkbox" name="form_items[<%=@item.id%>][]" value="<%= h entry[:value] %>" <%= 'checked="checked"' if entry[:default] %> />

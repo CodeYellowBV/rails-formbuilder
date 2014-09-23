@@ -1,6 +1,6 @@
 <% klasses = FormBuilder.get_classes -%>
 <% if !klasses.empty? -%>
-<ul class="toolbox" id="<%= @opts[:id] || 'toolbox' %>">
+<ul class="toolbox" id="<%= @toolbox_id || 'toolbox' %>">
 <%-   klasses .each do |klass| -%>
 <%-     if klass.concrete_item? -%>
 <li><%= render_cell klass.name.underscore, :tool -%></li>
@@ -9,5 +9,5 @@
 </ul>
 <%- end -%>
 <script type="text/javascript">
-  new Toolbox("<%= @opts[:id] || 'toolbox' %>", "tool");
+  new Toolbox("<%= @toolbox_id || 'toolbox' %>", "tool");
 </script>

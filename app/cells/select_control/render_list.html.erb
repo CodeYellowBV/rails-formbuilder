@@ -1,4 +1,4 @@
-<% @opts[:list].each do |entry| %>
+<% @list.each do |entry| %>
 <%   if entry.is_a?(Hash) %>
 <option value="<%= h entry[:value] %>" <%= 'selected="selected"' if entry[:default] %> />
 <%= h entry[:name] %>

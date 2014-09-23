@@ -14,7 +14,10 @@ class FormCell < Cell::Base
 
   # Render the toolbox.  This is an ul with li's in it which contain the tools.
   # The li's are made draggable.
-  def toolbox; render; end
+  def toolbox
+    @toolbox_id = options[:id] # XXX??
+    render
+  end
 
   # Show the form.  This renders the canvas on which to draw the tools.
   def show; render; end
