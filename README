@@ -39,9 +39,11 @@ against.
 - bluecloth [2.2.0]
 - acts_as_list [0.4.0]
 - cells (https://github.com/apotonick/cells) [3.5.0]
+- will_paginate [3.0.7]
 
 You might be able to do without BlueCloth if you disable the use of
-InformationalStatic form elements.
+InformationalStatic form elements.  If you write your own views,
+you won't need will_paginate either.
 
 Libraries
 ---------
